@@ -23,14 +23,6 @@ public class Interpreter {
 		
 		this.runNode(this.nodes[5]);
 		
-		/*for(int n = 0; n < 6; n++) {
-			System.out.println(n);
-			Node currentNode = nodes[n];
-			//loop over inputs
-			for(int i = 0; i < currentNode.inputs.length; i++) {
-				System.out.println(currentNode.inputs[i]);
-			}
-		}*/
 	}
 	
 	private Value runNode(Node node) {
