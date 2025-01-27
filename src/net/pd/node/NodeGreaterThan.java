@@ -1,3 +1,7 @@
+package net.pd.node;
+
+import net.pd.value.*;
+
 public class NodeGreaterThan extends Node {
 	public NodeGreaterThan() {
 		super(2);

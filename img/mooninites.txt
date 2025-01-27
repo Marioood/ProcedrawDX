@@ -1,0 +1,145 @@
+   _   _
+  J ]_] |   +
+  ]/_ _\[ __|   __[]  +
+/|  ___  |     |\ /[ _|
+|[_______]    /|'_' |
+   _| |_        i--i
+
+
+nodes [
+	add {
+		n0: map.y
+		n1: 9
+	},
+	mult {
+		n0: map.x
+		n1: add.output
+	},
+	plot {
+		r: null (0)
+		g: add.output
+		b: mult.output
+	}
+]
+//traversal algorithm (recursive)
+
+function parseNodes(node) {
+	define args[inputs.length] //arguments for current node function
+	//loop through inputs
+	for each input in node (using i as an iterator) {
+		//TODO (after you get the basic stuff working!!): variables
+		//if the input comes from another node, parse that node
+		if(input is from a node) {
+			args[i] = parseNodes(input.someNode)
+		} else {
+			args[i] = input.value
+		}
+	}
+	//feed arguments into the node function
+	node.process(args)
+}
+//begin traversal
+parseNodes(end)
+
+
+
+
+
+
+
+
+InputList {
+	n0: INT
+	n1: INT
+	variance: INT
+	fade: BOOLEAN
+}
+
+sanitize(generic, type)
+
+
+
+define board as int[16x16] ~~ some imaginary game of life board
+
+for y from 0 to 16 {
+	for x from 0 to 16 {
+		define neighbors as 0
+		
+		for yl from -1 to 1 {
+			for x1 from -1 to 1 {
+				if x0 equals y0 and 0 then {
+					continue
+				}
+				
+				define idx as x + x1 + (y + y1) * 16
+				
+				if item idx of board is 1 then {
+					increment neighbors
+				}
+			}
+		}
+				
+		if neighbors is greater than 3 then {
+			set item idx to 0
+		} else if neighbors is less than 2 then {
+			set item idx to 0
+		} else {
+			set item idx to 1
+		}
+	}
+}
+
+process 7 times 6
+output into greater than
+process 1 plus 1
+output into if
+process if
+output into then print
+process print
+
+(starting at 1+1)
+process inputs
+fire output 0
+process inputs
+go up output 1
+process inputs
+go down output 1
+use output and process inputs
+fire output 0
+process inputs
+input was true
+fire output 1
+process inputs
+terminate
+
+runNode(some node) {
+	process and output into next node
+	
+	if the node has another input from a node...
+	then
+		runNode(that other node)
+	else if the next node is an if...
+		if the input is <true>
+			then fire the then output
+			else fire the else output
+}
+
+use fixed point for decimals - why?
+
+faster to convert to regular int
+	bitshift vs some mystery operation that i dont know the inner workings of (probably similar to converting numbers to strings)
+will need to convert between the two A LOT because of the amount of array accessing and setting
+no procedural image program would reasonably need infinity, or really any number past 10000
+floats are like a tiny bit slower than ints on modern hardware (i want ALL the speed i can get)
+
+either use longs or regular ints for fixed's (3 billion max num vs 16 thousand max num)
+
+also make sure to test negative numbers
+also also, dont output plain ints. would be confusing on the user's end to see a number become smaller for no apparent reason
+	example:
+		node outputs integer i with a value of either Integer.MAX_VALUE or Long.MAX_VALUE (depending on how fixed's are represented)
+		outputs goes into node input that uses fixed point numbers
+		node computes whatever using the truncated value
+		node outputs computation with incorrect result
+		user is very confused
+	users shouldn't have to understand the inner workings of a program in order to use it

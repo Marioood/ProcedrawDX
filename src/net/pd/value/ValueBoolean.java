@@ -1,3 +1,5 @@
+package net.pd.value;
+
 public class ValueBoolean extends Value {
 	private boolean value;
 	
@@ -11,5 +13,9 @@ public class ValueBoolean extends Value {
 	
 	public boolean getBoolean() {
 		return this.value;
+	}
+	
+	public String getString() {
+		return this.value ? "true" : "false";
 	}
 }

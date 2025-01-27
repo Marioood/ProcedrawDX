@@ -1,7 +1,11 @@
+package net.pd.node;
+
+import net.pd.value.*;
+
 public class Node {
 	public Value[] inputs;
 	public int inputCount;
-	//inputs should be outputs of other nodes (nodes can have more than 1 output)
+	
 	public Node(int inputCount) {
 		this.inputs = new Value[inputCount];
 		this.inputCount = inputCount;

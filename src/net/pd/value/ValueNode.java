@@ -1,3 +1,5 @@
+package net.pd.value;
+
 public class ValueNode extends Value {
 	private int index;
 	
