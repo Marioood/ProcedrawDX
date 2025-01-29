@@ -41,13 +41,6 @@ function parseNodes(node) {
 //begin traversal
 parseNodes(end)
 
-
-
-
-
-
-
-
 InputList {
 	n0: INT
 	n1: INT
@@ -143,3 +136,58 @@ also also, dont output plain ints. would be confusing on the user's end to see a
 		node outputs computation with incorrect result
 		user is very confused
 	users shouldn't have to understand the inner workings of a program in order to use it
+
+
+
+
+
+
+
+
+
+pre alpha
+-node rendering
+-node editing
+-node serialization
+
+
+
+alpha
+
+
+beta
+
+
+
+
+
+notex display language
+
+input: i(index:type:name)
+
+variatic input: i(start...end:type:name)
+
+variatic segment: ...(text/symbols/inputs)
+
+symbol: $(symbol)
+
+end caps: {}, (), <>, /\, []
+
+new line: :
+
+plain text: 'text'
+
+node graph: n()
+
+-----
+
+multiply node: ( i(0 : fixed) ...( $(mult) i(1... : fixed) ) )
+sine node    : ( i(0 : fixed : $(theta)) : 'sin' )
+ternary node : { i(0 : bool) '?' i(1) ':' i(2) }
+function     : { i(0) i(1) : 'f' }
+
+test         : < i(0 : type : text) 'text 2kki' >
+
+
+
+remap ctrl to c

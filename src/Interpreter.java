@@ -1,5 +1,4 @@
 import java.util.Hashtable;
-import java.awt.*;
 import java.awt.image.*;
 import net.pd.value.*;
 import net.pd.node.*;
@@ -8,16 +7,14 @@ public class Interpreter {
 	public Node[] nodes = new Node[6];
 	public Hashtable<String, Value> variables = new Hashtable<String, Value>();
 	private int safety = 0;
+	private BufferedImage image;
+	private int start;
 	
 	public Interpreter(BufferedImage image) {
-		Value xValue = new ValueInt(0);
-		Value yValue = new ValueInt(0);
-		this.variables.put("x", xValue);
-		this.variables.put("y", yValue);
-		
-		/*this.nodes[0] = (new NodeAdd()
+		this.image = image;
+		this.nodes[0] = (new NodeAdd()
 			.setInput(0, new ValueInt(1))
-			.setInput(1, new ValueInt(1)));
+			.setInput(1, new ValueVariable("y")));
 		this.nodes[1] = (new NodeMultiply()
 			.setInput(0, new ValueVariable("y"))
 			.setInput(1, new ValueVariable("x")));
@@ -30,31 +27,41 @@ public class Interpreter {
 		this.nodes[4] = (new NodeGreaterThan()
 			.setInput(0, new ValueNode(3))
 			.setInput(1, new ValueInt(3)));
-		this.nodes[5] = (new NodePrint()
-			.setInput(0, new ValueNode(4)));*/
-			
-		this.nodes[0] = (new NodeOutputRGB()
+		this.nodes[5] = (new NodeOutputRGB() 
+			.setInput(0, new ValueNode(2))
+			.setInput(1, new ValueNode(4))
+			.setInput(2, new ValueInt(127)));
+		
+		this.start = 5;
+		
+		/*this.nodes[0] = (new NodeOutputRGB()
 			.setInput(0, new ValueVariable("x"))
 			.setInput(1, new ValueVariable("y"))
 			.setInput(2, new ValueInt(0))
-		);
+		);*/
+	}
+	
+	public void run() {
+		Value xValue = new ValueInt(0);
+		Value yValue = new ValueInt(0);
+		this.variables.put("x", xValue);
+		this.variables.put("y", yValue);
 		
 		for(int y = 0; y < 256; y++) {
 			((ValueInt)yValue).setInt(y);
 			for(int x = 0; x < 256; x++) {
 				((ValueInt)xValue).setInt(x);
 				//always start at the final output node
-				int col = this.runNode(this.nodes[0]).getInt();
+				int col = this.runNode(this.nodes[start]).getInt();
 				image.setRGB(x, y, col);
 			}
 		}
-		
 	}
 	
 	private Value runNode(Node node) {
-		if(this.safety > 100) {
+		/*if(this.safety > 100) {
 			System.exit(1);
-		}
+		}*/
 		
 		Value[] parsedInputs = new Value[node.inputs.length];
 		//loop over all node inputs

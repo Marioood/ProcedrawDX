@@ -1,18 +1,24 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.image.*;
 import net.pd.value.*;
 import net.pd.node.*;
+import net.pd.notex.*;
 
 public class Procedraw {
 	public static void main(String[] args) {
 		//god java is so stupid what is this
 		BufferedImage canvasData = new BufferedImage(256, 256, BufferedImage.TYPE_INT_ARGB);
 		Interpreter interpreter = new Interpreter(canvasData);
+		interpreter.run();
 		Window window = new Window();
 		
-		CanvasPanel canvasPanel = new CanvasPanel(canvasData);
-		window.getContentPane().add(canvasPanel);
+		PanelCanvas panelCanvas = new PanelCanvas(canvasData);
+		window.getContentPane().add(panelCanvas);
+		
+		PanelGraph panelGraph = new PanelGraph(interpreter.nodes);
+		window.getContentPane().add(panelGraph);
+		
+		Parser parser = new Parser();
 		/*long mantissa = 16;
 		long x = 0x00008000;//5 << mantissa;
 		long y = 8 << mantissa;

@@ -1,14 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
-import javax.imageio.*;
 import java.awt.image.*;
 
-public class CanvasPanel extends JPanel {
+public class PanelCanvas extends JPanel {
 	
 	private BufferedImage image;
 	
-	public CanvasPanel(BufferedImage image) {
-		this.setBounds(0, 0, 200, 200);
+	public PanelCanvas(BufferedImage image) {
+		this.setBounds(0, 0, 256, 256);
 		/*try {
 			this.image = ImageIO.read(new File("img/test.png"));
 		} catch(IOException e) {

@@ -1,0 +1,13 @@
+package net.pd.notex;
+
+public enum Tokens {
+	PARENTHESIS_RIGHT,
+	PARENTHESIS_LEFT,
+	ARROW_RIGHT,
+	ARROW_LEFT,
+	INPUT,
+	COLON,
+	QUOTE,
+	VARIADIC,
+	SYMBOL
+}
