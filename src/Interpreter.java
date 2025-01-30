@@ -4,7 +4,7 @@ import net.pd.value.*;
 import net.pd.node.*;
 
 public class Interpreter {
-	public Node[] nodes = new Node[6];
+	public Node[] nodes = new Node[7];
 	public Hashtable<String, Value> variables = new Hashtable<String, Value>();
 	private int safety = 0;
 	private BufferedImage image;
@@ -27,10 +27,12 @@ public class Interpreter {
 		this.nodes[4] = (new NodeGreaterThan()
 			.setInput(0, new ValueNode(3))
 			.setInput(1, new ValueInt(3)));
-		this.nodes[5] = (new NodeOutputRGB() 
+		this.nodes[5] = (new NodeEndRGB() 
 			.setInput(0, new ValueNode(2))
 			.setInput(1, new ValueNode(4))
 			.setInput(2, new ValueInt(127)));
+		this.nodes[6] = (new NodePrint() 
+			.setInput(0, new ValueNode(2)));
 		
 		this.start = 5;
 		

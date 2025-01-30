@@ -4,7 +4,7 @@ import net.pd.value.*;
 
 public class NodePrint extends Node {
 	public NodePrint() {
-		super(1);
+		super(1, "{ i(0:any:print) }");
 	}
 	
 	public Value process(Value[] inputs) {

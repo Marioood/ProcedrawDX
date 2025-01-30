@@ -2,9 +2,10 @@ package net.pd.node;
 
 import net.pd.value.*;
 
-public class NodeOutputRGB extends Node {
-	public NodeOutputRGB() {
-		super(3);
+public class NodeEndRGB extends Node {
+	public NodeEndRGB() {
+		super(3, "( i(0:number:r) i(1:number:g) i(2:number:b) )");
+		this.terminates = true;
 	}
 	
 	public Value process(Value[] inputs) {

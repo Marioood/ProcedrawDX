@@ -148,13 +148,13 @@ also also, dont output plain ints. would be confusing on the user's end to see a
 pre alpha
 -node rendering
 -node editing
--node serialization
 -parsing
 -rendering
--display text & symbols from string
-
+-write rendering scripts
+-parse node rendering scripts;
 
 alpha
+-node serialization
 
 
 beta
