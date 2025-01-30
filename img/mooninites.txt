@@ -149,7 +149,9 @@ pre alpha
 -node rendering
 -node editing
 -node serialization
-
+-parsing
+-rendering
+-display text & symbols from string
 
 
 alpha
@@ -172,6 +174,7 @@ variatic segment: ...(text/symbols/inputs)
 symbol: $(symbol)
 
 end caps: {}, (), <>, /\, []
+	end caps should automatically be switched out when the node is an output node
 
 new line: :
 
@@ -187,7 +190,17 @@ ternary node : { i(0 : bool) '?' i(1) ':' i(2) }
 function     : { i(0) i(1) : 'f' }
 
 test         : < i(0 : type : text) 'text 2kki' >
+test 2       : ( $(mult) $(question) )
 
 
 
 remap ctrl to c
+
+this.paths = new float[][][] {
+	{
+		{f,f},
+	}
+};
+
+this.width = ;
+this.height = ;

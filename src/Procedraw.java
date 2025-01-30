@@ -18,7 +18,7 @@ public class Procedraw {
 		PanelGraph panelGraph = new PanelGraph(interpreter.nodes);
 		window.getContentPane().add(panelGraph);
 		
-		Parser parser = new Parser();
+		//Parser parser = new Parser();
 		/*long mantissa = 16;
 		long x = 0x00008000;//5 << mantissa;
 		long y = 8 << mantissa;
