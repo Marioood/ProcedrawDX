@@ -5,6 +5,7 @@ public class ValueInt extends Value {
 	
 	public ValueInt(int value) {
 		this.value = value;
+		this.type = Value.INTEGER;
 	}
 	
 	public int getInt() {

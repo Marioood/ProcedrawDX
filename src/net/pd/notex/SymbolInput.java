@@ -4,6 +4,7 @@ public class SymbolInput extends Symbol {
 	
 	public int index;
 	public Symbol name;
+	public float x;
 	
 	public SymbolInput(int index, Symbol name) {
 		//offset for connections? i guess naybe

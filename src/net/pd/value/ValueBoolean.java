@@ -5,6 +5,7 @@ public class ValueBoolean extends Value {
 	
 	public ValueBoolean(boolean value) {
 		this.value = value;
+		this.type = Value.BOOLEAN;
 	}
 	
 	public int getInt() {

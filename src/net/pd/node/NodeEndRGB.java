@@ -4,7 +4,7 @@ import net.pd.value.*;
 
 public class NodeEndRGB extends Node {
 	public NodeEndRGB() {
-		super(3, "( i(0:number:r) i(1:number:g) i(2:number:b) )");
+		super(3, "[ i(0:number:r) i(1:number:g) i(2:number:b) ]");
 		this.terminates = true;
 	}
 	

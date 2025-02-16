@@ -5,13 +5,10 @@ public class ValueNode extends Value {
 	
 	public ValueNode(int index) {
 		this.index = index;
+		this.type = Value.NODE;
 	}
 	
 	public int getNode() {
 		return index;
-	}
-	
-	public boolean isFromNode() {
-		return true;
 	}
 }

@@ -151,7 +151,11 @@ pre alpha
 -parsing
 -rendering
 -write rendering scripts
--parse node rendering scripts;
+-camera movement
+-zooming
+-input text
+-input lines
+-editing!!
 
 alpha
 -node serialization
@@ -159,7 +163,7 @@ alpha
 
 beta
 
-
+physgun
 
 
 
@@ -204,3 +208,7 @@ this.paths = new float[][][] {
 
 this.width = ;
 this.height = ;
+
+decouple node stuff from rendering
+
+happy 18th birthday mooninite boston panic! - 11:52 1/31/2025

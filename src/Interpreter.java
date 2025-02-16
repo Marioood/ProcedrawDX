@@ -1,10 +1,12 @@
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.awt.image.*;
 import net.pd.value.*;
 import net.pd.node.*;
+import java.util.ArrayList;
 
 public class Interpreter {
-	public Node[] nodes = new Node[7];
+	public ArrayList<Node> nodes = new ArrayList<Node>();
 	public Hashtable<String, Value> variables = new Hashtable<String, Value>();
 	private int safety = 0;
 	private BufferedImage image;
@@ -12,26 +14,33 @@ public class Interpreter {
 	
 	public Interpreter(BufferedImage image) {
 		this.image = image;
-		this.nodes[0] = (new NodeAdd()
+		//0
+		this.nodes.add(new NodeAdd()
 			.setInput(0, new ValueInt(1))
 			.setInput(1, new ValueVariable("y")));
-		this.nodes[1] = (new NodeMultiply()
+		//1
+		this.nodes.add(new NodeMultiply()
 			.setInput(0, new ValueVariable("y"))
 			.setInput(1, new ValueVariable("x")));
-		this.nodes[2] = (new NodeAdd()
+		//2
+		this.nodes.add(new NodeAdd()
 			.setInput(0, new ValueInt(1))
 			.setInput(1, new ValueNode(0)));
-		this.nodes[3] = (new NodeAdd()
+		//3
+		this.nodes.add(new NodeAdd()
 			.setInput(0, new ValueNode(1))
 			.setInput(1, new ValueNode(2)));
-		this.nodes[4] = (new NodeGreaterThan()
+		//4
+		this.nodes.add(new NodeGreaterThan()
 			.setInput(0, new ValueNode(3))
 			.setInput(1, new ValueInt(3)));
-		this.nodes[5] = (new NodeEndRGB() 
+		//5
+		this.nodes.add(new NodeEndRGB() 
 			.setInput(0, new ValueNode(2))
 			.setInput(1, new ValueNode(4))
 			.setInput(2, new ValueInt(127)));
-		this.nodes[6] = (new NodePrint() 
+		//6
+		this.nodes.add(new NodePrint() 
 			.setInput(0, new ValueNode(2)));
 		
 		this.start = 5;
@@ -54,7 +63,7 @@ public class Interpreter {
 			for(int x = 0; x < 256; x++) {
 				((ValueInt)xValue).setInt(x);
 				//always start at the final output node
-				int col = this.runNode(this.nodes[start]).getInt();
+				int col = this.runNode(this.nodes.get(start)).getInt();
 				image.setRGB(x, y, col);
 			}
 		}
@@ -70,11 +79,11 @@ public class Interpreter {
 		for(int i = 0; i < node.inputs.length; i++) {
 			Value input = node.inputs[i];
 			//do we need to calculate this input? or is it just typed there
-			if(input.isFromNode()) {
+			if(input.type == Value.NODE) {
 				//run recursively
 				//calculate new input
-				parsedInputs[i] = this.runNode(this.nodes[input.getNode()]);
-			} else if(input.isFromVariable()) {
+				parsedInputs[i] = this.runNode(this.nodes.get(input.getNode()));
+			} else if(input.type == Value.VARIABLE) {
 				//get variable value from hashtable
 				parsedInputs[i] = this.variables.get(input.getString());
 			} else {

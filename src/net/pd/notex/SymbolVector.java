@@ -62,6 +62,44 @@ public class SymbolVector extends Symbol {
 				this.height = 32;
 				this.stretched = true;
 				break;
+			case ">":
+				this.paths = new float[][][] {
+					{
+						{0f,0f},
+						{16f,16f},
+						{0f,32f}
+					}
+				};
+				this.width = 0;
+				this.height = 32;
+				this.stretched = true;
+				break;
+			case "[":
+				this.paths = new float[][][] {
+					{
+						{0f,0f},
+						{-16f,0f},
+						{-16f,32f},
+						{0f,32f}
+					}
+				};
+				this.width = 0;
+				this.height = 32;
+				this.stretched = true;
+				break;
+			case "]":
+				this.paths = new float[][][] {
+					{
+						{0f,0f},
+						{16f,0f},
+						{16f,32f},
+						{0f,32f}
+					}
+				};
+				this.width = 0;
+				this.height = 32;
+				this.stretched = true;
+				break;
 			case "times":
 				this.paths = new float[][][] {
 					{
@@ -108,7 +146,114 @@ public class SymbolVector extends Symbol {
 					}
 				};
 				break;
+			case "theta":
+				this.paths = new float[][][] {
+					{
+						{0f,8f},
+						{1f,3f},
+						{2f,1f},
+						{4f,0f},
+						{6f,1f},
+						{7f,3f},
+						{8f,8f},
+						{7f,13f},
+						{6f,15f},
+						{4f,16f},
+						{2f,15f},
+						{1f,13f},
+						{0f,8f}
+					},
+					{
+						{0f,8f},
+						{8f,8f}
+					}
+				};
+				break;
+			case "logo":
+				this.paths = new float[][][] {
+					{ //boundaries
+						{0f,0f},
+						{0f,16f},
+						{16f,16f},
+						{16f,0f},
+						{0f,0f}
+					},
+					{//iteration 1
+						{8f,0f},
+						{8f,16f}
+					},
+					{
+						{0f,8f},
+						{16f,8f}
+					},
+					{//iteration 2
+						{4f,0f},
+						{4f,8f}
+					},
+					{
+						{0f,4f},
+						{8f,4f}
+					},
+					{
+						{12f,8f},
+						{12f,16f}
+					},
+					{
+						{8f,12f},
+						{16f,12f}
+					},
+					{//iteration 3
+						{2f,0f},
+						{2f,4f}
+					},
+					{
+						{0f,2f},
+						{4f,2f}
+					},
+					{
+						{6f,4f},
+						{6f,8f}
+					},
+					{
+						{4f,6f},
+						{8f,6f}
+					},
+					{
+						{10f,8f},
+						{10f,12f}
+					},
+					{
+						{8f,10f},
+						{12f,10f}
+					},
+					{
+						{14f,12f},
+						{14f,16f}
+					},
+					{
+						{12f,14f},
+						{16f,14f}
+					}
+				};
+				
+				this.width = 16;
+				break;
+			case "root":
+				this.paths = new float[][][] {
+					{
+						{-16f,16f},
+						{-8f,16f},
+						{0f,32f},
+						{16f,0f}
+					}
+				};
+				
+				this.width = 16;
+				this.height = 32;
+				this.stretched = true;
+				break;
 			default:
+				//unknown character
 				this.paths = new float[][][] {
 					{
 						{0f,4f},

@@ -6,8 +6,8 @@ import net.pd.notex.*;
 
 public class Procedraw {
 	public static void main(String[] args) {
-		//god java is so stupid what is this
 		BufferedImage canvasData = new BufferedImage(256, 256, BufferedImage.TYPE_INT_ARGB);
+		//god java is so stupid what is this
 		Interpreter interpreter = new Interpreter(canvasData);
 		interpreter.run();
 		Window window = new Window();
@@ -17,6 +17,11 @@ public class Procedraw {
 		
 		PanelGraph panelGraph = new PanelGraph(interpreter.nodes);
 		window.getContentPane().add(panelGraph);
+		
+		JTextField textField = new JTextField(10);
+		textField.setBounds(0, 0, 24, 16);
+		panelGraph.add(textField);
+		
 		
 		//Parser parser = new Parser();
 		/*long mantissa = 16;

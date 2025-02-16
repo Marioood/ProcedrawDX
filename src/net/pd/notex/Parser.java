@@ -40,6 +40,7 @@ public class Parser {
 			
 			if(tokenLookup.get(currentChar) != null) {
 				//avoid unecessary splitting
+				//TODO: use inString instead
 				if(currentChar == 'i' || currentChar == '$') {
 					if(code.charAt(i + 1) != '(') {
 						currentToken += currentChar;

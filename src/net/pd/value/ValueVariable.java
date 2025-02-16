@@ -5,13 +5,10 @@ public class ValueVariable extends Value {
 	
 	public ValueVariable(String key) {
 		this.key = key;
+		this.type = Value.VARIABLE;
 	}
 	
 	public String getString() {
 		return key;
-	}
-	
-	public boolean isFromVariable() {
-		return true;
 	}
 }
