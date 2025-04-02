@@ -1,3 +1,4 @@
+package net.pd.editor;
 import net.pd.node.*;
 import net.pd.notex.Symbol;
 import net.pd.notex.SymbolInput;
@@ -70,8 +71,8 @@ public class PanelNode extends JPanel implements MouseMotionListener, MouseListe
 			this.setLocation(mouseX, mouseY);
 			this.beingDragged = true;
 		} else {
-			float xDif =  nubX - (float)e.getX();
-			float yDif =  nubY - (float)e.getY();
+			float xDif = nubX - (float)e.getX();
+			float yDif = nubY - (float)e.getY();
 			float outputDist = (float)Math.sqrt(xDif * xDif + yDif * yDif);
 			
 			if(outputDist < this.nubSize * scale) {
@@ -81,20 +82,32 @@ public class PanelNode extends JPanel implements MouseMotionListener, MouseListe
 					this.draggingOutput = true;
 					this.beingDragged = true;
 				}
-				System.out.println("TODO: create new component for drawing connection lines");
 			}
 		}
 	}
 	
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		//drag or drag output
 		this.beingDragged = false;
 		this.draggingOutput = false;
 		//delete visual line
 		if(this.outputSelect != null) {
-			//is this a memory leak? who knows!
+			//does this cause a memory leak? who knows!
 			this.parent.remove(this.outputSelect);
+			PanelNode inputCandidate = this.parent.panelNodeUnderMouse;
+			
+			if(inputCandidate != null && inputCandidate != this) {
+				//set one of my inputs to another node's output
+				System.out.println(this.tiedNode + " -> " + inputCandidate.tiedNode);
+				this.parent.connectionLines.add(new ComponentConnection(inputCandidate, this));
+			}
 		}
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		//am i about to recieve input from another nodepanel?
+		this.parent.panelNodeUnderMouse = this;
 	}
 	
 	private void initializeDisplay(Graphics g) {
@@ -272,9 +285,7 @@ public class PanelNode extends JPanel implements MouseMotionListener, MouseListe
 	@Override
 	public void mouseClicked(MouseEvent e) { }
 	@Override
-	public void mouseEntered(MouseEvent e) { }
+	public void mousePressed(MouseEvent e) { }
 	@Override
 	public void mouseExited(MouseEvent e) { }
-	@Override
-	public void mousePressed(MouseEvent e) { }
 }

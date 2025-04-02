@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.image.*;
 import net.pd.value.*;
+import net.pd.editor.PanelCanvas;
+import net.pd.editor.PanelGraph;
+import net.pd.editor.Window;
 import net.pd.node.*;
 import net.pd.notex.*;
 

@@ -1,3 +1,4 @@
+package net.pd.editor;
 import javax.swing.*;
 import java.awt.*;
 import net.pd.node.*;
@@ -14,6 +15,10 @@ public class PanelGraph extends JPanel {
 	public float camX = 0f;
 	public float camY = 0f;
 	public Font font =  new Font("Times New Roman", Font.PLAIN, (int)(16 * scale));
+	//method?
+	public PanelNode panelNodeUnderMouse;
+	
+	public ArrayList<ComponentConnection> connectionLines = new ArrayList<ComponentConnection>();
 	
 	public PanelGraph(ArrayList<Node> nodes) {
 		this.nodes = nodes;
@@ -28,5 +33,10 @@ public class PanelGraph extends JPanel {
 
 	public void paint(Graphics g) {
 		super.paint(g);
+		
+		for(ComponentConnection connection : this.connectionLines) {
+			connection.resize();
+		}
+		System.out.println("i am being rendered");
 	}
 }

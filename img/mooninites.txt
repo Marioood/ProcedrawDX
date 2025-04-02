@@ -146,7 +146,6 @@ also also, dont output plain ints. would be confusing on the user's end to see a
 
 
 pre alpha
--node rendering
 -node editing
 -parsing
 -rendering
@@ -156,6 +155,11 @@ pre alpha
 -input text
 -input lines
 -editing!!
+-node output -> node inputs RENDERING
+-node outputs -> node inputs
+-have editor effect program
+-remove node inputs in editor
+unrelated delete ascii backspace unrelated
 
 alpha
 -node serialization

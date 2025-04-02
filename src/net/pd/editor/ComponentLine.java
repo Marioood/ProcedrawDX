@@ -1,3 +1,4 @@
+package net.pd.editor;
 import java.awt.Graphics;
 
 import javax.swing.*;
@@ -31,6 +32,7 @@ public class ComponentLine extends JComponent {
 		}
 		
 		g.drawLine(x0, y0, x1 - 1, y1 - 1);
+		System.out.println("jojidpajopsd");
 	}
 	
 	public void setEnds(int x0, int y0, int x1, int y1) {
